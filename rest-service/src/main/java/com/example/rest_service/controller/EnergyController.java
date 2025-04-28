@@ -19,17 +19,12 @@ public class EnergyController {
 
     @GetMapping("/current")
     public CurrentPercentage getCurrentPercentage() {
-        // Dummy-Daten als Beispiel
-        LocalDateTime currentHour = LocalDateTime.of(2025, 1, 10, 14, 0, 0);
-        double communityDepleted = 100.0;
-        double gridPortion = 5.63;
+
+        LocalDateTime currentHour = LocalDateTime.of(2025, 1, 9, 9, 0, 0);
+        double communityDepleted = 99.0;
+        double gridPortion = 9.99;
         return new CurrentPercentage(currentHour, communityDepleted, gridPortion);
     }
-
-    /**
-     * GET /energy/historical?start=2025-01-10T14:00:00&end=2025-01-10T16:00:00
-     * Liefert Test Daten für den angefragten Zeitraum.
-     */
     @GetMapping("/historical")
     public List<Usage> getHistoricalUsage(
             @RequestParam("start")
@@ -37,11 +32,13 @@ public class EnergyController {
             @RequestParam("end")
             @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime end) {
 
-        // Test Daten zurückgegeben.
+
         List<Usage> usageList = new ArrayList<>();
 
-        usageList.add(new Usage(LocalDateTime.of(2025, 1, 10, 14, 0), 18.05, 18.05, 1.076));
-        usageList.add(new Usage(LocalDateTime.of(2025, 1, 10, 15, 0), 15.015, 14.033, 2.049));
+        usageList.add(new Usage(LocalDateTime.of(2025, 1, 9, 9, 0), 22.0, 20.0, 2.0));
+        usageList.add(new Usage(LocalDateTime.of(2025, 1, 11, 19, 0), 18.5, 17.0, 1.5));
+        usageList.add(new Usage(LocalDateTime.of(2025, 1, 12, 13, 30), 20.0, 18.0, 2.0));
+
 
         return usageList;
     }
