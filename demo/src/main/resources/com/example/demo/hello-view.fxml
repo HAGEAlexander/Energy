@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox spacing="10" alignment="CENTER" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.demo.HelloController">
+  <Label text="Current Hour Data" />
+  <HBox spacing="10">
+    <Button text="Fetch Current" onAction="#onFetchCurrentButtonClick"/>
+    <Label fx:id="hourLabel" text="Hour" />
+    <Label fx:id="depletedLabel" text="Community Depleted" />
+    <Label fx:id="gridLabel" text="Grid Portion" />
+  </HBox>
+
+  <Separator/>
+
+  <Label text="Historic Data" />
+  <HBox spacing="10">
+    <TextField fx:id="startField" promptText="Start (ISO)" />
+    <TextField fx:id="endField" promptText="End (ISO)" />
+    <Button text="Fetch Historical" onAction="#onFetchHistoricalButtonClick"/>
+  </HBox>
+
+  <TableView fx:id="usageTable">
+    <columns>
+      <TableColumn fx:id="hourColumn" text="Hour" />
+      <TableColumn fx:id="producedColumn" text="Produced" />
+      <TableColumn fx:id="usedColumn" text="Used" />
+      <TableColumn fx:id="gridUsedColumn" text="Grid Used" />
+    </columns>
+  </TableView>
+</VBox>
