@@ -19,7 +19,7 @@ public class ProducerService {
 
     public void startProducing() throws Exception {
         while (true) {
-            double factor = 0.5 + 0.5 * rnd.nextDouble(); // TODO: integrate Weather API
+            double factor = 0.5 + 0.5 * rnd.nextDouble();
             double kwh = 0.002 + 0.005 * factor * rnd.nextDouble();
             Map<String,Object> msg = Map.of(
                     "type","PRODUCER",
