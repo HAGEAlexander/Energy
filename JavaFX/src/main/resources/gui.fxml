@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.SpinnerValueFactory.IntegerSpinnerValueFactory?>
+
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.groupx.gui.controller.GuiController">
+  <top>
+    <Label text="Energy Communities Dashboard"
+           style="-fx-font-size: 18px; -fx-padding: 10px;"/>
+  </top>
+  <center>
+    <VBox spacing="15">
+      <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+      </padding>
+
+      <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Community Depleted (%):"/>
+        <Label fx:id="communityDepletedLabel" text="--"/>
+        <Label text="   Grid Portion (%):"/>
+        <Label fx:id="gridPortionLabel" text="--"/>
+        <Button text="Refresh" onAction="#onRefreshCurrent"/>
+      </HBox>
+      <Separator/>
+      <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Start:"/>
+        <DatePicker fx:id="startDatePicker"/>
+        <Spinner fx:id="startHourSpinner" prefWidth="60"/>
+        <Spinner fx:id="startMinuteSpinner" prefWidth="60"/>
+        <Label text="    End:"/>
+        <DatePicker fx:id="endDatePicker"/>
+        <Spinner fx:id="endHourSpinner" prefWidth="60"/>
+        <Spinner fx:id="endMinuteSpinner" prefWidth="60"/>
+        <Button text="Load History" onAction="#onLoadHistory"/>
+      </HBox>
+      <TableView fx:id="historyTable" prefHeight="250">
+        <columns>
+          <TableColumn fx:id="hourCol" text="Hour" prefWidth="150"/>
+          <TableColumn fx:id="prodCol" text="Produced" prefWidth="100"/>
+          <TableColumn fx:id="usedCol" text="Used" prefWidth="100"/>
+          <TableColumn fx:id="gridCol" text="Grid" prefWidth="100"/>
+        </columns>
+      </TableView>
+    </VBox>
+  </center>
+</BorderPane>
